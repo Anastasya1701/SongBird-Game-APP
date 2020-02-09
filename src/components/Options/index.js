@@ -1,4 +1,6 @@
 import React from 'react';
+import wrong from '../../sounds/wrong.mp3';
+import success from '../../sounds/success.wav';
 
 let scoreResult = 5;
 const Options = props => {
@@ -6,7 +8,12 @@ const Options = props => {
 
   const clickAction = (item, e) => {
     props.setTempBird(item);
-    console.log('пришло');
+
+    const playSound = src => {
+      const audio = new Audio();
+      audio.src = src;
+      audio.autoplay = true;
+    };
 
     if (props.state) {
       if (+item.id === props.currentBird.id) {
@@ -14,9 +21,11 @@ const Options = props => {
         e.target.style.backgroundColor = 'green';
         props.setScore(props.score + scoreResult);
         scoreResult = 5;
+        playSound(success);
       } else {
         e.target.style.backgroundColor = 'red';
         if (scoreResult > 0) scoreResult -= 1;
+        playSound(wrong);
       }
     }
   };

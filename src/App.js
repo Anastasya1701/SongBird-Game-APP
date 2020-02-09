@@ -31,7 +31,6 @@ const App = () => {
   };
   return (
     <>
-      {console.log(finish)}
       {finish ? (
         <div className="wrapper">
           <Header
