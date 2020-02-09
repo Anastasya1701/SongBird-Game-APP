@@ -1,7 +1,6 @@
 .game {
   display: flex;
-
-// flex-wrap: wrap;
+  // flex-wrap: wrap;
   justify-content: space-between;
   @media screen and (max-width: $medium) {
     flex-direction: column;
@@ -43,4 +42,8 @@
   padding: 15px;
   background-color: $block;
   outline: 1px solid $item;
+}
+
+.none {
+  display: none;
 }

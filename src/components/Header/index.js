@@ -15,7 +15,7 @@ const Header = props => {
         </h1>
         <div className="header__score">
           <span className="header__score-text">Score: </span>
-          <span className="header__score-value">0</span>
+          <span className="header__score-value">{props.score}</span>
         </div>
       </div>
       <div className="header__game-map">

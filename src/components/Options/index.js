@@ -1,17 +1,24 @@
 import React from 'react';
 
+let scoreResult = 5;
 const Options = props => {
-  // const idCurrentBird = [props.currentBird.id];
+  console.log(props.currentBird.id);
 
-  const clickAction = event => {
+  const clickAction = (item, e) => {
+    props.setTempBird(item);
+    console.log('пришло');
+
     if (props.state) {
-      console.log();
-
-      if (+event.target.id === props.currentBird.id) {
+      if (+item.id === props.currentBird.id) {
         props.setState(false);
-        event.target.style.backgroundColor = 'green';
+        e.target.style.backgroundColor = 'green';
+        props.setScore(props.score + scoreResult);
+        scoreResult = 5;
+        console.log('совпадение', scoreResult);
       } else {
-        event.target.style.backgroundColor = 'red';
+        console.log('результат уменьшился', scoreResult);
+        e.target.style.backgroundColor = 'red';
+        if (scoreResult > 0) scoreResult -= 1;
       }
     }
   };
@@ -24,7 +31,7 @@ const Options = props => {
             className="game__options-item"
             key={item.id}
             id={item.id}
-            onClick={clickAction}
+            onClick={e => clickAction(item, e)}
           >
             {item.name}
           </div>

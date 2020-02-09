@@ -5,23 +5,19 @@ import Quiz from './components/Quiz';
 import GameInfo from './components/GameInfo';
 import BirdsData from './utils/birdsData';
 import './styles/main.scss';
-// import style from './styles/main.module.scss'
-// main.module.scss назвать файл так, не нужен БЭМ
 
 const App = () => {
   const [state, setState] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
+  const [score, setScore] = useState(0);
+  const [tempBird, setTempBird] = useState('');
+  console.log('dsdsdsd', score);
 
   const randomBird = birds => birds[Math.floor(Math.random() * birds.length)];
 
   const [currentBird, setCurrentBird] = useState(
     randomBird(BirdsData[currentStep].birds)
   );
-
-  // const idCurrentBird = currentBird.id;Ы
-  // console.log(idCurrentBird);
-
-  // const [score, setScore] = useState(0);
 
   const goNextLevel = () => {
     if (currentStep < BirdsData.length - 1) {
@@ -34,16 +30,19 @@ const App = () => {
   };
   return (
     <div className="wrapper">
-      <Header BirdsData={BirdsData} />
-      <Quiz currentBird={currentBird} />
+      <Header BirdsData={BirdsData} score={score} />
+      <Quiz currentBird={currentBird} state={state} />
       <div className="game">
         <Options
           BirdsDataItem={BirdsData[currentStep]}
           currentBird={currentBird}
           setState={setState}
           state={state}
+          setScore={setScore}
+          score={score}
+          setTempBird={setTempBird}
         />
-        <GameInfo />
+        <GameInfo state={state} currentBird={currentBird} tempBird={tempBird} />
       </div>
       <button
         type="button"
