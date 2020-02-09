@@ -14,9 +14,7 @@ const Options = props => {
         e.target.style.backgroundColor = 'green';
         props.setScore(props.score + scoreResult);
         scoreResult = 5;
-        console.log('совпадение', scoreResult);
       } else {
-        console.log('результат уменьшился', scoreResult);
         e.target.style.backgroundColor = 'red';
         if (scoreResult > 0) scoreResult -= 1;
       }

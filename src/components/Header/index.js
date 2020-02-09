@@ -19,9 +19,16 @@ const Header = props => {
         </div>
       </div>
       <div className="header__game-map">
-        {props.BirdsData.map(item => {
+        {props.BirdsData.map((item, index) => {
           return (
-            <div className="header__game-item" key={item.id}>
+            <div
+              className={
+                props.currentStep === index
+                  ? 'header__game-item active'
+                  : 'header__game-item'
+              }
+              key={item.id}
+            >
               {item.name}
             </div>
           );

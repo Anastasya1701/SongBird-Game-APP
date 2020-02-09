@@ -25,7 +25,11 @@
   height: 40px;
   background-color: $map;
 }
-.header__game-item:nth-child(1) {
+// .header__game-item:nth-child(1) {
+//   text-align: center;
+//   background-color: $active;
+// }
+.active {
   text-align: center;
   background-color: $active;
 }

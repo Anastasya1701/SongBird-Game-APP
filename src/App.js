@@ -4,6 +4,7 @@ import Options from './components/Options';
 import Quiz from './components/Quiz';
 import GameInfo from './components/GameInfo';
 import BirdsData from './utils/birdsData';
+import Finish from './components/Finish';
 import './styles/main.scss';
 
 const App = () => {
@@ -11,7 +12,7 @@ const App = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [score, setScore] = useState(0);
   const [tempBird, setTempBird] = useState('');
-  console.log('dsdsdsd', score);
+  const [finish, setFinish] = useState(true);
 
   const randomBird = birds => birds[Math.floor(Math.random() * birds.length)];
 
@@ -24,35 +25,52 @@ const App = () => {
       setCurrentStep(currentStep + 1);
       setCurrentBird(randomBird(BirdsData[currentStep + 1].birds));
     } else {
-      document.querySelector('.wrapper').innerHTML = 'игра закончилась';
+      setFinish(false);
     }
     setState(true);
   };
   return (
-    <div className="wrapper">
-      <Header BirdsData={BirdsData} score={score} />
-      <Quiz currentBird={currentBird} state={state} />
-      <div className="game">
-        <Options
-          BirdsDataItem={BirdsData[currentStep]}
-          currentBird={currentBird}
-          setState={setState}
-          state={state}
-          setScore={setScore}
-          score={score}
-          setTempBird={setTempBird}
-        />
-        <GameInfo state={state} currentBird={currentBird} tempBird={tempBird} />
-      </div>
-      <button
-        type="button"
-        className="btn"
-        onClick={goNextLevel}
-        disabled={state}
-      >
-        Next Level
-      </button>
-    </div>
+    <>
+      {console.log(finish)}
+      {finish ? (
+        <div className="wrapper">
+          <Header
+            BirdsData={BirdsData}
+            score={score}
+            currentBird={currentBird}
+            currentStep={currentStep}
+          />
+          <Quiz currentBird={currentBird} state={state} />
+          <div className="game">
+            <Options
+              BirdsDataItem={BirdsData[currentStep]}
+              currentBird={currentBird}
+              setState={setState}
+              state={state}
+              setScore={setScore}
+              score={score}
+              setTempBird={setTempBird}
+              setCurrentStep={setCurrentStep}
+            />
+            <GameInfo
+              state={state}
+              currentBird={currentBird}
+              tempBird={tempBird}
+            />
+          </div>
+          <button
+            type="button"
+            className="btn"
+            onClick={goNextLevel}
+            disabled={state}
+          >
+            Next Level
+          </button>
+        </div>
+      ) : (
+          <Finish />
+        )}
+    </>
   );
 };
 
