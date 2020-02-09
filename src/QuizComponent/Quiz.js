@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import BirdPic from './BirdPic';
-import BirdName from './BirdName';
-import BirdVoice from './BirdVoice';
+import Picture from './Picture';
+import Name from './Name';
+import Player from './Player';
 
 class Quiz extends Component {
   render() {
     return (
       <div className="quiz">
-        <BirdPic />
-        <BirdName />
-        <BirdVoice />
+        <Picture />
+        <Name />
+        <Player />
       </div>
     );
   }

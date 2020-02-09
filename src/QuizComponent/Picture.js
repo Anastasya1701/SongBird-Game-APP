@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Pic from '../assets/images/bird.jpg';
 
-class BirdPic extends Component {
+class Picture extends Component {
   render() {
     return (
       <img src={Pic} className="bird-pic" alt="bird" width="200" height="150" />
@@ -9,4 +9,4 @@ class BirdPic extends Component {
   }
 }
 
-export default BirdPic;
+export default Picture;

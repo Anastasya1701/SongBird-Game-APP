@@ -12,8 +12,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
-    "husky": "^4.2.1",
-    "lint-staged": "^10.0.7",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
@@ -27,8 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "precommit": "lint-staged"
+    "lint:fix": "eslint . --fix"
   },
   "eslintConfig": {
     "extends": "react-app"
