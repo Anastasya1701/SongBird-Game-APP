@@ -1,16 +1,7 @@
 import React from 'react';
 import sertificate from '../../utils/Sertificate-bird.pdf'
 
-const Finish = ({ score, setFinish, setState, setCurrentStep, setScore, setTempBird }) => {
-
-    const replay = () => {
-        setFinish(true);
-        setState(true);
-        setCurrentStep(0);
-        setScore(0);
-        setTempBird('');
-    }
-
+const Finish = ({ score }) => {
 
     return (
         <div className="finish">
@@ -23,7 +14,7 @@ const Finish = ({ score, setFinish, setState, setCurrentStep, setScore, setTempB
                 <button
                     type="button"
                     className={score === 30 ? 'none' : "finish__btn"}
-
+                    onClick={() => window.location.reload()}
                 >
                     Попробовать еще раз!
                 </button>

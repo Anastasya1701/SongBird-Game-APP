@@ -5,9 +5,11 @@ import success from '../../sounds/success.wav';
 let scoreResult = 5;
 const Options = ({ currentBird, setTempBird, state, setState, score, setScore, BirdsDataItem }) => {
   console.log('Подсказка для вегетарианцев', currentBird.id);
+  console.log("TCL: Options -> currentBird", currentBird)
 
   const clickAction = (item, e) => {
     setTempBird(item);
+    console.log("TCL: clickAction -> item", item)
 
     const playSound = src => {
       const audio = new Audio();
@@ -16,7 +18,9 @@ const Options = ({ currentBird, setTempBird, state, setState, score, setScore, B
     };
 
     if (state) {
+      console.log("TCL: clickAction -> state должен быть тру ", state)
       if (+item.id === currentBird.id) {
+        console.log("TCL: clickAction -> currentBird", currentBird)
         setState(false);
         e.target.style.backgroundColor = 'rgba(48, 154, 19, 0.918)';
         setScore(score + scoreResult);

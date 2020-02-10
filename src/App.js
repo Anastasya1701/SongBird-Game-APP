@@ -15,10 +15,11 @@ const App = () => {
   const [finish, setFinish] = useState(true);
 
   const randomBird = birds => birds[Math.floor(Math.random() * birds.length)];
-
   const [currentBird, setCurrentBird] = useState(
     randomBird(BirdsData[currentStep].birds)
   );
+
+
 
   const goNextLevel = () => {
     if (currentStep < BirdsData.length - 1) {
@@ -70,14 +71,7 @@ const App = () => {
           </button>
         </>
       ) : (
-          <Finish
-            score={score}
-            setFinish={setFinish}
-            setState={setState}
-            setCurrentStep={setCurrentStep}
-            setScore={setScore}
-            setTempBird={setTempBird}
-          />
+          <Finish />
         )}
 
     </div>
