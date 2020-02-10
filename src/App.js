@@ -67,8 +67,8 @@ const App = () => {
           </button>
         </div>
       ) : (
-          <Finish />
-        )}
+        <Finish score={score} setFinish={setFinish} />
+      )}
     </>
   );
 };

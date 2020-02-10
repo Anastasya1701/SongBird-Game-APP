@@ -3,11 +3,11 @@ import wrong from '../../sounds/wrong.mp3';
 import success from '../../sounds/success.wav';
 
 let scoreResult = 5;
-const Options = props => {
-  console.log(props.currentBird.id);
+const Options = ({ currentBird, setTempBird, state, setState, score, setScore, BirdsDataItem }) => {
+  console.log(currentBird.id);
 
   const clickAction = (item, e) => {
-    props.setTempBird(item);
+    setTempBird(item);
 
     const playSound = src => {
       const audio = new Audio();
@@ -15,11 +15,11 @@ const Options = props => {
       audio.autoplay = true;
     };
 
-    if (props.state) {
-      if (+item.id === props.currentBird.id) {
-        props.setState(false);
+    if (state) {
+      if (+item.id === currentBird.id) {
+        setState(false);
         e.target.style.backgroundColor = 'green';
-        props.setScore(props.score + scoreResult);
+        setScore(score + scoreResult);
         scoreResult = 5;
         playSound(success);
       } else {
@@ -32,13 +32,15 @@ const Options = props => {
 
   return (
     <div className="game__options">
-      {props.BirdsDataItem.birds.map(item => {
+      {BirdsDataItem.birds.map(item => {
         return (
           <div
             className="game__options-item"
             key={item.id}
             id={item.id}
             onClick={e => clickAction(item, e)}
+            role="button"
+            tabIndex="0"
           >
             {item.name}
           </div>
