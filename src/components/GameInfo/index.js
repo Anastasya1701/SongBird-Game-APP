@@ -27,7 +27,7 @@ const GameInfo = ({ tempBird, state }) => {
       <p className="game__info-description">
         {!state
           ? tempBird.description
-          : 'Привет выбери птицу нагетцоед'}
+          : 'Привет, выбери птицу нагетцоед.'}
       </p>
     </div>
   );

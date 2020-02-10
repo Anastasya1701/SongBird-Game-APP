@@ -4,7 +4,7 @@ import success from '../../sounds/success.wav';
 
 let scoreResult = 5;
 const Options = ({ currentBird, setTempBird, state, setState, score, setScore, BirdsDataItem }) => {
-  console.log(currentBird.id);
+  console.log('Подсказка для вегетарианцев', currentBird.id);
 
   const clickAction = (item, e) => {
     setTempBird(item);
@@ -18,7 +18,7 @@ const Options = ({ currentBird, setTempBird, state, setState, score, setScore, B
     if (state) {
       if (+item.id === currentBird.id) {
         setState(false);
-        e.target.style.backgroundColor = 'green';
+        e.target.style.backgroundColor = 'rgba(48, 154, 19, 0.918)';
         setScore(score + scoreResult);
         scoreResult = 5;
         playSound(success);

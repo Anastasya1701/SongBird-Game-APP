@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Options from './components/Options';
 import Quiz from './components/Quiz';
 import GameInfo from './components/GameInfo';
-import BirdsData from './utils/birdsData';
+import BirdsData from './utils/BirdsData'
 import Finish from './components/Finish';
 import './styles/main.scss';
 
@@ -24,21 +24,24 @@ const App = () => {
     if (currentStep < BirdsData.length - 1) {
       setCurrentStep(currentStep + 1);
       setCurrentBird(randomBird(BirdsData[currentStep + 1].birds));
+
     } else {
       setFinish(false);
     }
     setState(true);
   };
   return (
-    <>
+    <div className="wrapper">
+      <>
+        <Header
+          BirdsData={BirdsData}
+          score={score}
+          currentBird={currentBird}
+          currentStep={currentStep}
+        />
+      </>
       {finish ? (
-        <div className="wrapper">
-          <Header
-            BirdsData={BirdsData}
-            score={score}
-            currentBird={currentBird}
-            currentStep={currentStep}
-          />
+        <>
           <Quiz currentBird={currentBird} state={state} />
           <div className="game">
             <Options
@@ -59,17 +62,25 @@ const App = () => {
           </div>
           <button
             type="button"
-            className="btn"
+            className={!state ? "btn orange" : "btn"}
             onClick={goNextLevel}
             disabled={state}
           >
             Next Level
           </button>
-        </div>
+        </>
       ) : (
-        <Finish score={score} setFinish={setFinish} />
-      )}
-    </>
+          <Finish
+            score={score}
+            setFinish={setFinish}
+            setState={setState}
+            setCurrentStep={setCurrentStep}
+            setScore={setScore}
+            setTempBird={setTempBird}
+          />
+        )}
+
+    </div>
   );
 };
 
